@@ -1,0 +1,38 @@
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#container strong {
+  font-size: 18px;
+  line-height: 26px;
+}
+#container p {
+  font-size: 26px;
+  line-height: 24px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+#container a {
+  text-decoration: none;
+}
+.bg-style {
+  background:lightblue;  
+  margin:0 auto;
+  height:17%;
+  width: 17%;
+  border-style: solid;
+  border-width: .2em;
+  background-color: green;
+  text-align: center
+
+          }
+
+.avatar{
+  margin: auto;
+}

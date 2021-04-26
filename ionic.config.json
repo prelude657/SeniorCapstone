@@ -1,0 +1,8 @@
+{
+  "name": "RioBlogger",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

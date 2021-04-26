@@ -1,0 +1,36 @@
+
+<!-- GPS Screen header -->
+<ion-header>
+  <h1 style= "text-align:center; color:yellow; font-size: 20px; background-color: green; background-blend-mode: color-burn;">
+    Welcome to the Blog Builder App
+    <ion-avatar class="bg-style">
+      <img src="https://i.ibb.co/64GpRf1/download.png">
+    </ion-avatar>
+    Are you lost??? <br> Type in the closest address for coordinates</h1>
+   
+  <ion-button horizontal= "start" shape= "round" color="primary" vertical="center" [routerLink]="'/home/'"> Home > >  <ion-icon size="small"  name="Home"></ion-icon></ion-button>
+   <ion-button horizontal= "end" shape = "round" color="danger" vertical="center" (click)="logout()"> Logout <ion-icon size="small"  name="log-out-outline"></ion-icon></ion-button>
+</ion-header>
+
+
+
+
+<!-- GPS Screen with coordinates at the bootom -->
+
+<ion-content class="ion-padding">
+
+
+    <input margin="auto" class ="class" type="text" class="native-input sc-ion-input-ios" (keydown.enter)="$event.preventDefault()" placeholder="Type Current Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+    <br><br>
+
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+      (dragEnd)="markerDragEnd($event)"></agm-marker>
+  </agm-map>
+
+  <h5>Coordinates: {{address}}</h5>
+  <div>Latitude: {{latitude}}</div>
+  <div>Longitude: {{longitude}}</div>
+
+</ion-content>

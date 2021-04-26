@@ -1,0 +1,45 @@
+<!--Dashoboard header -->
+<ion-header>
+  <h1 style= "text-align:center; color:yellow; font-size: 20px; background-color: green; background-blend-mode: color-burn;">
+    The Rio Blog Builder
+    <ion-avatar class="bg-style">
+      <img src="https://i.ibb.co/64GpRf1/download.png">
+    </ion-avatar>
+    Success! </h1>
+</ion-header>
+
+
+<!--Dashboard display of information-->
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center;">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        Your Registered Email ID : {{userEmail}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button SHAPE="round" (click)="showSuccessAlert()" expand="full" color="primary" vertical="center" [routerLink]="'/home/'"> Go to the Home Page</ion-button>
+
+<ion-card color = "success">
+<ion-text  style="color: yellow;" ><br> --    Stop video for slient mode  --<br> <br></ion-text>
+</ion-card>  
+
+<!-- Dashborad intro video-->
+  <iframe 
+  src="https://www.youtube.com/embed/gYy1RITRN9s" 
+  frameborder="8"
+  scrolling="no" 
+  height="100%" 
+width="100%"></iframe>
+</ion-content>
+
+<!--Logout-->
+<ion-footer (click)="logout()">
+  <ion-toolbar color="danger">
+    <ion-title>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer>

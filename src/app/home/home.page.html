@@ -1,0 +1,135 @@
+<!-- Home Screen header -->
+<ion-header>
+  <h1 style= "text-align:center; color:yellow; font-size: 20px; background-color: green; background-blend-mode: color-burn;">
+    The Rio Blog Builder App
+    <ion-avatar class="bg-style">
+      <img src="https://i.ibb.co/64GpRf1/download.png">
+    </ion-avatar>
+    Write Detailed Review Below</h1> 
+
+  <ion-button shape= "round" color="warning" vertical="center" horizontal= "center" [routerLink]="'/gps/'"> Gps Lookup > >  <ion-icon size="small"  name="earth-outline"></ion-icon></ion-button>
+  <ion-button horizontal= "end" shape = "round" color="danger" vertical="center" (click)="logout()"> Logout <ion-icon size="small"  name="log-out-outline"></ion-icon></ion-button>
+</ion-header>
+
+
+
+
+<!-- Create a new Record  -->
+
+<ion-content >
+  <form [formGroup]="blogForm" (ngSubmit)="CreateRecord()">
+
+    <ion-item>
+      <ion-label position="floating">Location</ion-label>
+      <ion-input formControlName="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Author</ion-label>
+      <ion-input formControlName="Author"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input formControlName="Price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Blog Entry Details</ion-label>
+      <ion-textarea rows="6" formControlName="Description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="CreateRecord()" [disabled]="blogForm.invalid">
+        <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+        &nbsp;Add Blog Entry
+      </ion-button>
+    </ion-item>
+
+  </form>
+
+
+
+
+
+  <!-- Record on home page with CRUD options -->
+
+  <ion-card *ngFor="let item of blogList" color="tertiary">
+    <span *ngIf="!item.isEdit; else elseBlock">
+      <ion-card-header>
+        <div align="center">
+        <ion-avatar>
+          <img src="https://i.ibb.co/64GpRf1/download.png">
+        </ion-avatar>
+      </div>
+
+        <ion-card-title style="text-align: center;">Blog Title: <br> {{item.Name}} <br><br>  Author: {{item.Author}}<br> Price: ${{item.Price}}</ion-card-title><br>
+        <ion-card-subtitle>Details: {{item.Description}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-button shape="round" color="warning" size="small" (click)="EditRecord(item)">
+          <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+
+        </ion-button>
+        <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
+          <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+
+
+
+
+ <!-- blog edit screen  -->
+        </ion-button>
+      </ion-card-content>
+    </span>
+    <ng-template #elseBlock>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            Edit Your Entry
+          </ion-col>
+          <ion-col>
+            <ion-button fill="solid" color="danger" size="small" (click)="item.isEdit = false">
+              Cancel
+                      </ion-button>
+                    </ion-col>
+                    <ion-col>
+                          <ion-button fill="solid" color="success" size="small" (click)="UpdateRecord(item)">
+                            Update
+                          </ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </ion-card-title>
+                </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label><strong>Location</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
+        </ion-item>
+
+
+<!-- Format that will be diplayed for each blog card -->
+        <ion-item>
+          <ion-label><strong>By</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditAuthor"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label><strong>Price</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditPrice"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Details:</strong></ion-label>
+          <ion-textarea type="text" [(ngModel)]="item.EditDescription"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+
+
+</ion-content>
+
+ 
